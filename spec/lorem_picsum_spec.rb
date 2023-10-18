@@ -1,11 +1,12 @@
-# frozen_string_literal: true
+require 'spec_helper'
+require 'lorem_picsum'
 
 RSpec.describe LoremPicsum do
-  it "has a version number" do
-    expect(LoremPicsum::VERSION).not_to be nil
-  end
-
-  it "does something useful" do
-    expect(false).to eq(true)
+  describe '.random_image' do
+    it 'returns an image URL' do
+      result = LoremPicsum.random_image(width: 200, height: 300)
+      expect(result).to start_with('https://')
+      expect(result).to include('picsum.photos')
+    end
   end
 end
